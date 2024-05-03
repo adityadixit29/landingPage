@@ -1,0 +1,40 @@
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    gap: 10px;
+    align-items: center;
+
+    >.pagination-arrow {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 50%;
+        border: 2px solid #4D8EFF;
+        background-color: white;
+        display: flex;
+        color: #4D8EFF;
+        justify-content: center;
+        align-items: center;
+        font-size: large;
+    }
+
+    >.pagination-button {
+        background: none;
+        border: none;
+        color: #838383;
+        height: 1.5rem;
+        width: 1.5rem;
+
+
+    }
+
+    >.active {
+        background: none;
+        border: none;
+        color: white;
+        height: 2.5rem;
+        width: 2.5rem;
+        background-color: #4D8EFF;
+        border-radius: 50%;
+    }
+}

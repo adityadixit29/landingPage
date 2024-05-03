@@ -11,9 +11,9 @@ const data = [
 
 ];    
 const Requset = () => {
-  // const [selectedRows, setSelectedRows] = useState([]);
-  const [schoolData, setSchoolData] = useState([]);
 
+  const [schoolData, setSchoolData] = useState([]);
+  const [checked,setChecked] = useState(false);
   useEffect(() => {
     // Retrieve data from local storage when component mounts
     const storedSchools = JSON.parse(localStorage.getItem('schools'));
@@ -21,13 +21,22 @@ const Requset = () => {
       setSchoolData(storedSchools);
     }
   }, []);
-  // const handleCheckboxChange = (index) => {
-  //   if (selectedRows.includes(index)) {
-  //     setSelectedRows(selectedRows.filter((i) => i !== index));
-  //   } else {
-  //     setSelectedRows([...selectedRows, index]);
-  //   }
-  // };    
+
+
+  const handleDeleteRow = (index) => {
+    const confirmation = window.confirm("Are you sure you want to delete this row?");
+    if (confirmation) {
+      const updatedSchoolData = [...schoolData];
+      updatedSchoolData.splice(index, 1); // Remove the row at the specified index
+      setSchoolData(updatedSchoolData);
+      localStorage.setItem('schools', JSON.stringify(updatedSchoolData));
+    }
+  };
+
+  const handleClick = () => {
+    setChecked(!checked);
+  };
+  
 
   const getCurrentDate = () => {
     const currentDate = new Date();
@@ -60,12 +69,14 @@ const Requset = () => {
       <table>
       <thead>
         <tr>
-          <th><input type="checkbox" name="" id="" /></th>
+          <th>
+            <input type="checkbox"  onClick={handleClick} />
+            </th>
           <th>School</th>
           <th>Branch</th>
           <th>Curriculum</th>
           <th>Date</th>
-          <th>Option</th>
+          <th style={{textAlign:"center"}}>Option</th>
         </tr>
       </thead>
       <tbody>
@@ -73,16 +84,17 @@ const Requset = () => {
               <tr key={index}>
                 <td>
                   <input
-                    type="checkbox"
-                    //checked={selectedRows.includes(index)}
-                    //onChange={() => handleCheckboxChange(index)}
+                    type="checkbox" 
+                    checked={checked}
                   />
                 </td>
                 <td>{item.schoolName}</td>
                 <td>{item.branch}</td>
                 <td>{item.curriculum}</td>
                 <td>{getCurrentDate()}</td>
-                <td>...</td>
+                <td style={{textAlign:"center"}}>
+                  <button onClick={() => handleDeleteRow(index)}>...</button>
+                </td>
               </tr>
         ))}
       </tbody>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { RiEyeCloseLine } from "react-icons/ri";
 import { FaEye } from "react-icons/fa";
+import {Link} from "react-router-dom"
+import School from '../school/School';
 import './welcome.css'
 const New = ({ heading, subheading, img, infolength }) => {
     const [email, setEmail] = useState('')
@@ -23,32 +25,32 @@ const New = ({ heading, subheading, img, infolength }) => {
         setAllow(true)
         setPassword(e.target.value);
     }
-    const checkValidation = (e) => {
-        e.preventDefault();
+    const checkValidation = () => {
+   
         const reGex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        if (reGex.test(email)) {
-            setAllow(true)
-            setMessage("Email is valid")
-        }
-        else if (email === "") {
-
-            setMessage("Please Enter the text")
-        }
-        else {
-            setMessage("Invalid Email Format")
-        }
-
-        if (password.length == { infolength }) {
-            setCorrectpassword("Password is correct")
-        }
-        else if (password == "") {
-            setCorrectpassword("Enter password")
-        }
-        else {
-
-            setCorrectpassword("Invalid Email or password")
+        let isValidEmail = reGex.test(email);
+        console.log(password.length);
+        let isValidPassword = password.length >= 8;
+    
+        if (isValidEmail && isValidPassword) {
+            setAllow(true);
+            setMessage("Email is valid");
+            setCorrectpassword("Password is correct");
+        } else {
+            if (!isValidEmail) {
+                setMessage("Invalid Email Format");
+            } else if (email === "") {
+                setMessage("Please Enter the text");
+            }
+            if (!isValidPassword) {
+                setCorrectpassword("Invalid Password Format");
+            } else if (password === "") {
+                setCorrectpassword("Enter password");
+            }
+            setAllow(false);
         }
     }
+    
     return (
         <div className="container">
             <div className="left">
@@ -76,7 +78,7 @@ const New = ({ heading, subheading, img, infolength }) => {
                     </div>
                 </div>
                 <div className="btn">
-                    {allow ? <button className='button' onClick={checkValidation} >Log In</button> :
+                    {allow ? <Link to="school" className='button' onClick={checkValidation} >Log In</Link> :
                         <button className='button-disable' onClick={checkValidation} >Log In</button>}
                 </div>
                 <div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import { addSchool } from "../../redux/actions/SchoolActions";
+import { IoArrowBackSharp } from "react-icons/io5";
 import "./Modal.css";
 const Modal = ({ setOpenModal }) => {
   const [schoolName, setSchoolName] = useState('');
@@ -29,41 +30,52 @@ const Modal = ({ setOpenModal }) => {
     <div className="modalBackground">
       <div className="modalContainer">
         <div className="titleCloseBtn">
-          <button
+          <div className='modal-top-heading'>
+            <div className='modal-left'>
+                <span>
+                <IoArrowBackSharp/>
+                </span>
+                Add New Data
+            </div>
+            <div className='modal-right'>
+            <button
             onClick={() => {
               setOpenModal(false);
             }}
           >
             X
           </button>
+            </div>
+          </div>
         </div>
         <form onSubmit={handleSubmit}>
-          <div>
-            School: <input
+          
+          <div className='modal'>
+            <label className='modal-input'>School:</label> <input
               type="text"
               placeholder="School"
               value={schoolName}
               onChange={(e) => setSchoolName(e.target.value)}
             />
           </div>
-          <div>
-            Branch: <input
+          <div className='modal'>
+            <label className='modal-input'>Branch:</label> <input
               type="text"
               placeholder="Branch"
               value={branch}
               onChange={(e) => setBranch(e.target.value)}
             />
           </div>
-          <div>
-            Curriculum: <input
+          <div className='modal'>
+            <label className='modal-input'>Curriculum:</label> <input
               type="text"
               placeholder="Curriculum"
               value={curriculum}
               onChange={(e) => setCurriculum(e.target.value)}
             />
           </div>
-          <button type="submit">Submit</button>
-          <div className="footer">
+          <div className="footer-modal">
+            <button type="submit">Submit</button>
             <button
               onClick={() => {
                 setOpenModal(false);

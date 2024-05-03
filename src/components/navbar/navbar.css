@@ -1,0 +1,146 @@
+*{
+
+    box-sizing: border-box;
+}
+.container-school{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    /* border: 1px solid red; */
+    display: flex;
+    gap: 20px;
+    background-color: #F4F4F4;
+
+    > .left{
+        border-radius: 1rem;
+        height: 100vh;
+        width: 20%;
+        background-color: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        > .grid{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+
+        
+            > .text{
+                border: none;
+                width: 18.4vw;
+                padding: 1rem;
+                border-radius: 0.6rem;
+                display: flex;
+                gap: 0.4rem;
+                font-size: 1rem;
+                > .main-menu{
+                    color: #838383;
+                    font-size: smaller;
+                }
+            }
+          > .btn{
+            background-color: white;
+            /* border: 1px solid red; */
+            border: none;
+            width: 18.4vw;
+            padding: 1rem;
+            border-radius: 0.6rem;
+            display: flex;
+            gap: 0.4rem;
+            font-size: 1rem;
+            
+            > p{
+                color: #838383;
+            }
+          }
+
+          > .btn:focus{
+            background-color: #4D8EFF;
+            /* border: 1px solid red; */
+            border: none;
+            width: 18.4vw;
+            padding: 1rem;
+            border-radius: 0.6rem;
+            display: flex;
+            gap: 0.4rem;
+            font-size: 1rem;
+            
+            > p{
+                font-weight: bold;
+                color: white;
+            }
+          }
+        }
+
+        > .bottom{
+            display: flex;
+            /* justify-content:; */
+            margin-top: auto;
+
+            > .user{
+                height: 10rem;
+                width: 100%;
+                /* border: 1px solid red; */
+                display: flex;
+                flex-direction: column;
+                /* justify-content: center; */
+                /* align-items: center; */
+                padding-left: 1.2rem;
+                > .status{
+                    height: 4.4rem;
+                    display: flex;
+                    /* justify-content: center; */
+                    align-items: center;
+
+                    > .bottom-title{
+                        height: 2.4rem;
+                    }
+                    > img{
+                        width: 81px;
+                        height: 81px;
+                    }
+                }
+                > .completed{
+                    height: 66px;
+                    width: 90%;
+                    border-radius: 0.6rem;
+                    background-color: #4D8EFF1A;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    > .card{
+                        width: 70%;
+                        > .completed-status{
+                            color: #4D8EFF;
+                            font-weight: bold;
+                            font-size: 1rem;
+                        }
+                        > .completed-status-title{
+                            color: #838383;
+                            font-size: 0.6rem;
+                        }
+                    }
+
+                    > .forward-arrow{
+                        border-radius: 50%;
+                        background-color: white;
+                        color: #4D8EFF;
+                        text-align: center;
+                        width: 1.8rem;
+                        height: 1.8rem;
+                        width: 1.8rem;
+                        font-size: 1.8rem;     
+                    }
+                }
+                
+            }
+        }
+    }
+
+    > .right{
+        width: 80%;
+        height: 100vh;
+    }
+}

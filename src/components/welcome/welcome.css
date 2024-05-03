@@ -204,13 +204,15 @@
 
 
 /* responsive */
+
 @media screen and (max-width: 950px) {
   .container {
     flex-direction: column;
   }
 
   .container .left{
-    padding-left: 4rem;
+    width: 95%;
+    padding-left: 2rem;
     > .input{
       width: 100%;
     }
@@ -223,12 +225,19 @@
   }
 
   .container .right {
+    display: none;
     width: 100%;
     .image{
       position: absolute;
     top: 20%;
     right: 15%;
     height: 27rem;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .container .left{
+      padding: 31px;
     }
   }
 
